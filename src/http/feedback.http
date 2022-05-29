@@ -1,0 +1,11 @@
+GET http://localhost:6001/feedback
+
+###
+
+POST http://localhost:6001/feedback
+content-type: application/json
+
+{
+    "rating": 7,
+    "text": "Fedback item from the json server"
+}

@@ -2,13 +2,16 @@ import { useState, useContext, useEffect } from "react";
 import Card from "./Card";
 import Button from "./Button";
 import RatingSelect from "./RatingSelect";
+import FeedbackContext from "../context/FeedbackContext";
 
-const FeedbackForm = ({ handleAdd }) => {
+const FeedbackForm = () => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   //real time validation
   const [message, setMessage] = useState("");
+
+  const { addFeedback } = useContext(FeedbackContext);
 
   const handleTextChange = (e) => {
     // validation shall run whenever we type
@@ -36,7 +39,7 @@ const FeedbackForm = ({ handleAdd }) => {
       };
 
       //console.log(newFeedback);
-      handleAdd(newFeedback);
+      addFeedback(newFeedback);
       setText("");
     }
   };

@@ -3,11 +3,11 @@ import FeedbackItem from "./FeedbackItem";
 import FeedbackContext from "../context/FeedbackContext";
 import Spinner from "./Spinner";
 
-const FeedbackList = ({ handleDelete }) => {
+const FeedbackList = () => {
   const { feedback, isLoading } = useContext(FeedbackContext);
 
   if (!isLoading && (!feedback || feedback.length === 0)) {
-    return <p>No feedback yet!</p>;
+    return <p>No Feedback Yet</p>;
   }
 
   return isLoading ? (
@@ -15,7 +15,7 @@ const FeedbackList = ({ handleDelete }) => {
   ) : (
     <div className="feedback-list">
       {feedback.map((item) => (
-        <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
+        <FeedbackItem key={item.id} item={item} />
       ))}
     </div>
   );

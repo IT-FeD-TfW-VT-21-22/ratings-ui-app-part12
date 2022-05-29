@@ -12,7 +12,7 @@ import FeedbackForm from "./components/FeedbackForm";
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
 
-  const addFeedback = (newFeedback) => {
+  /*const addFeedback = (newFeedback) => {
     newFeedback.id = uuidv4();
     //console.log(newFeedback);
     setFeedback([newFeedback, ...feedback]);
@@ -22,7 +22,7 @@ function App() {
       setFeedback(feedback.filter((item) => item.id !== id));
       // will return an array minus the one we are deleleting
     }
-  };
+  };*/
 
   return (
     <FeedbackProvider>
@@ -35,12 +35,9 @@ function App() {
               path="/"
               element={
                 <>
-                  <FeedbackForm handleAdd={addFeedback} />
-                  <FeedbackStats feedback={feedback} />
-                  <FeedbackList
-                    feedback={feedback}
-                    handleDelete={deleteFeedback}
-                  />
+                  <FeedbackForm />
+                  <FeedbackStats />
+                  <FeedbackList />
                 </>
               }
             />
