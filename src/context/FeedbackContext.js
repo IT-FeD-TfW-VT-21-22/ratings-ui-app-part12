@@ -13,11 +13,25 @@ export const FeedbackProvider = ({ children }) => {
   // dont pass anything to the array cause loading feedbacks should only be donce once
 
   const fetchFeedback = async () => {
-    const response = await fetch(`/feedback`);
+    const response = await fetch("/feedback");
     const data = await response.json();
 
     setFeedback(data);
     setIsLoading(false);
+  };
+
+  const addFeedback = async (newFeedback) => {
+    const response = await fetch("/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newFeedback),
+    });
+
+    const data = await response.json();
+
+    setFeedback(data, ...feedback);
   };
 
   return (
@@ -25,6 +39,7 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         feedback,
         isLoading,
+        addFeedback,
       }}
     >
       {children}
